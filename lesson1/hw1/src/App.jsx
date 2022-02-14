@@ -5,8 +5,9 @@ import Header from './Header.jsx';
 
 class App extends React.Component {
   state = {
-    userData: persons.tesla,
+    userData: person
   };
+
   render() {
     return (
       <UserDataContext.Provider value={this.state.userData}>
