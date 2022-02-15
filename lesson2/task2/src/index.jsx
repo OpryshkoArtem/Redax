@@ -31,6 +31,6 @@ store.subscribe(() => {
 		}
 		return elem;
 	})
-	.join(' ');
+	.join('');
   resultElem.textContent = state.history.length === 0 ? '' : `${historyString} = ${currentValue}`;
 });
