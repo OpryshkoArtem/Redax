@@ -15,7 +15,7 @@ export const decrement = () => {
   };
 };
 
-export const counterReducer = (state = 0, action) => {
+export const counter = (state = 0, action) => {
   switch (action.type) {
     case INCREMENT:
       return state + 1;
@@ -26,9 +26,7 @@ export const counterReducer = (state = 0, action) => {
   }
 };
 
-const store = createStore(
-  counterReducer,
+export const store = createStore(
+  counter,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 );
-
-export default store;
