@@ -1,28 +1,28 @@
-import { SHOW_SPINNER, USER_DATA_RECIEVED } from './users.actions.js';
+import { SHOW_SPINNER, USER_DATA_RECIEVED } from './users.actions';
 
-const initialData = {
-	isFetching: false,
-	userData: null,
+const initialState = {
+  isFetching: false,
+  userData: null,
 };
 
-const usersReducer = (state = initialData, action) => {
+const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case SHOW_SPINNER: {
       return {
         ...state,
         isFetching: true,
-      };
+      }
     }
     case USER_DATA_RECIEVED: {
       return {
         ...state,
         userData: action.payload.userData,
-				isFetching: false,
-      };
+        isFetching: false,
+      }
     }
     default:
       return state;
   }
 };
 
-export default usersReducer;
+export default userReducer;

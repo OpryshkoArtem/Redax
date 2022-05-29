@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import * as usersActions from './users.actions.js';
-import { getUserData } from './users.gateway.js';
+import * as usersActions from './users.actions';
+import { getUserData } from './users.gateway';
 
-class SearchField extends React.Component {
+class SearchField extends Component {
   state = {
     userName: '',
   };
@@ -14,11 +15,11 @@ class SearchField extends React.Component {
 
   handleUserSearch = () => {
     this.props.showSpinner();
-		getUserData(this.state.userName)
-			.then(userData => {
-				this.props.userDataRecieved(userData);
-			});
-  };
+    getUserData(this.state.userName)
+    .then(userData => {
+      this.props.userDateRecieved(userData);
+    })
+  }
 
   render() {
     return (
@@ -26,20 +27,23 @@ class SearchField extends React.Component {
         <input
           type="text"
           className="name-form__input"
-          onChange={this.onChange}
           value={this.state.userName}
+          onChange={this.onChange}
         />
-        <button className="name-form__btn btn" onClick={this.handleUserSearch}>
-          Show
-        </button>
+        <button className="name-form__btn btn" onClick={this.handleUserSearch}>Show</button>
       </div>
     );
   }
 }
 
+SearchField.propTypes = {
+  showSpinner: PropTypes.func.isRequired,
+  userDateRecieved: PropTypes.func.isRequired,
+};
+
 const mapDispatch = {
   showSpinner: usersActions.showSpinner,
-	userDataRecieved: usersActions.userDataRecieved,
+  userDateRecieved: usersActions.userDateRecieved,
 };
 
 export default connect(null, mapDispatch)(SearchField);

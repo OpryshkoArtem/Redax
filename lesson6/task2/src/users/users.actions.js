@@ -4,14 +4,14 @@ export const USER_DATA_RECIEVED = 'USER_DATA_RECIEVED';
 export const showSpinner = () => {
   return {
     type: SHOW_SPINNER,
-  };
+  }
 };
 
-export const userDataRecieved = userData => {
+export const userDateRecieved = userData => {
   return {
     type: USER_DATA_RECIEVED,
-		payload: {
-			userData,
-		}
+    payload: {
+      userData,
+    }
   };
 };
