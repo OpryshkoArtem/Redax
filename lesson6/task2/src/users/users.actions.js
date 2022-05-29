@@ -1,14 +1,17 @@
-export const NEXT_PAGE = 'USERS/NEXT_PAGE';
-export const PREV_PAGE = 'USERS/PREV_PAGE';
+export const SHOW_SPINNER = 'SHOW_SPINNER';
+export const USER_DATA_RECIEVED = 'USER_DATA_RECIEVED';
 
-export const goNext = () => {
+export const showSpinner = () => {
   return {
-    type: NEXT_PAGE,
+    type: SHOW_SPINNER,
   };
 };
 
-export const goPrev = () => {
+export const userDataRecieved = userData => {
   return {
-    type: PREV_PAGE,
+    type: USER_DATA_RECIEVED,
+		payload: {
+			userData,
+		}
   };
 };

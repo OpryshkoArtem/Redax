@@ -1,31 +1,28 @@
-import { PREV_PAGE, NEXT_PAGE } from './users.actions';
-import users from '../users';
+import { SHOW_SPINNER, USER_DATA_RECIEVED } from './users.actions.js';
 
-const initialState = {
-  users: { usersList: [...users], currentPage: 1 },
+const initialData = {
+	isFetching: false,
+	userData: null,
 };
 
-const counterReducer = (state = initialState, action) => {
+const usersReducer = (state = initialData, action) => {
   switch (action.type) {
-    case PREV_PAGE:
+    case SHOW_SPINNER: {
       return {
         ...state,
-        users: {
-          ...state.users,
-          currentPage: state.users.currentPage - 1,
-        },
+        isFetching: true,
       };
-    case NEXT_PAGE:
+    }
+    case USER_DATA_RECIEVED: {
       return {
         ...state,
-        users: {
-          ...state.users,
-          currentPage: state.users.currentPage + 1,
-        },
+        userData: action.payload.userData,
+				isFetching: false,
       };
+    }
     default:
       return state;
   }
 };
 
-export default counterReducer;
+export default usersReducer;
