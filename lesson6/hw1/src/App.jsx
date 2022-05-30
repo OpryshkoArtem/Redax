@@ -1,14 +1,12 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import UsersList from './users/UsersList.jsx';
-import store from './store.js';
+import store from './store';
+import Weather from './weather/Weather';
 
-const App = () => {
-  return (
-    <Provider store={store}>
-      <UsersList />
-    </Provider>
-  );
-};
+const App = () => (
+  <Provider store={store}>
+    <Weather />
+  </Provider>
+);
 
 export default App;
